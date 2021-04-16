@@ -1,0 +1,60 @@
+s - started
+c - complited, not tested
+t - tested
+
+
+NO FUNCTIONS ALLOWED:
+MEM_FUNC:
+	ft_memset
+	ft_bzero
+	ft_memcpy
+	ft_memccpy
+	ft_memmove
+	ft_memchr
+	ft_memcmp
+	
+STR_FUNC:
+c	ft_strlen
+c	ft_strlcpy
+c	ft_strlcat
+	ft_strchr
+	ft_strrchr
+	ft_strnstr
+c	ft_strncmp
+	ft_atoi
+
+IS_FUNC:
+c	ft_isalpha
+c	ft_isdigit
+c	ft_isalnum
+c	ft_isascii
+c	ft_isprint
+c	ft_toupper
+c	ft_tolower
+
+MALLOC ONLY:
+	ft_calloc
+c	ft_strdup
+
+OTHER FUNCTIONS:
+	ft_substr			(malloc)
+	ft_strjoin			(malloc)
+	ft_strtrim			(malloc)
+	ft_split			(malloc, free)
+	ft_itoa				(malloc)
+	ft_strmapi			(malloc)
+	ft_putchar_fd		(write)
+	ft_putstr_fd		(write)
+	ft_putendl_fd		(write)
+	ft_putnbr_fd		(write)
+
+BONUS:
+	ft_lstnew			(malloc)
+	ft_lstadd_front		()
+	ft_lstsize			()
+	ft_lstlast			()
+	ft_lstadd_back		()
+	ft_lstdelone		(free)
+	ft_lstclear			(free)
+	ft_lstiter			()
+	ft_lstmap			(malloc, free)
