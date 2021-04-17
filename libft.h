@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 16:44:07 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 18:34:18 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 22:03:24 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,15 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **head, t_list *new_elem);
+int		ft_lstsize(t_list *head);
+t_list	*ft_lstlast(t_list *head);
+void	ft_lstadd_back(t_list **head, t_list *new_elem);
+void	ft_lstdelone(t_list *head, void (*del)(void *));
+void	ft_lstclear(t_list **head, void (*del)(void *));
+void	ft_lstiter(t_list *head, void (*func)(void *));
+t_list	*ft_lstmap(t_list *head, void *(*func)(void *), void (*del)(void *));
 
 #endif

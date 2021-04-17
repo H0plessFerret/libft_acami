@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 14:56:10 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 22:28:41 by acami            ###   ########.fr       */
+/*   Created: 2021/04/17 21:33:53 by acami             #+#    #+#             */
+/*   Updated: 2021/04/17 21:37:16 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_lstsize(t_list *head)
 {
-	size_t	count;
+	int	res;
 
-	count = 0;
-	while (count < n)
+	res = 0;
+	if (head == NULL)
+		return (res);
+	++res;
+	while (head->next != NULL)
 	{
-		if (*(unsigned char *)(s1 + count) != *(unsigned char *)(s2 + count))
-		{
-			return ((*(unsigned char *)(s1 + count))
-				  - (*(unsigned char *)(s2 + count)));
-		}
-		++count;
+		head = head->next;
+		++res;
 	}
-	return (0);
+	return (res);
 }

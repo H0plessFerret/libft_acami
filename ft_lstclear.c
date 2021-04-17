@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 14:56:10 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 22:28:41 by acami            ###   ########.fr       */
+/*   Created: 2021/04/17 21:48:13 by acami             #+#    #+#             */
+/*   Updated: 2021/04/17 21:51:32 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+void 	ft_lstclear(t_list **head, void (*del)(void *))
 {
-	size_t	count;
+	t_list	*curr;
 
-	count = 0;
-	while (count < n)
+	if (head == NULL)
+		return ;
+	if (*head == NULL)
+		return ;
+	curr = *head;
+	while (curr != NULL)
 	{
-		if (*(unsigned char *)(s1 + count) != *(unsigned char *)(s2 + count))
-		{
-			return ((*(unsigned char *)(s1 + count))
-				  - (*(unsigned char *)(s2 + count)));
-		}
-		++count;
+		*head = curr->next;
+		(*del)(curr->content);
+		free(curr);
+		curr = *head;
 	}
-	return (0);
 }

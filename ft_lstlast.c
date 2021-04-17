@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 14:56:10 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 22:28:41 by acami            ###   ########.fr       */
+/*   Created: 2021/04/17 21:35:26 by acami             #+#    #+#             */
+/*   Updated: 2021/04/17 21:36:56 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+t_list	*ft_lstlast(t_list *head)
 {
-	size_t	count;
-
-	count = 0;
-	while (count < n)
-	{
-		if (*(unsigned char *)(s1 + count) != *(unsigned char *)(s2 + count))
-		{
-			return ((*(unsigned char *)(s1 + count))
-				  - (*(unsigned char *)(s2 + count)));
-		}
-		++count;
-	}
-	return (0);
+	if (head == NULL)
+		return (NULL);
+	while (head->next != NULL)
+		head = head->next;
+	return (head);
 }

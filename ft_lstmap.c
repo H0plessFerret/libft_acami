@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 14:56:10 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 22:28:41 by acami            ###   ########.fr       */
+/*   Created: 2021/04/17 21:52:25 by acami             #+#    #+#             */
+/*   Updated: 2021/04/17 22:01:14 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+t_list	*ft_lstmap(t_list *head, void *(*func)(void *), void (*del)(void *))
 {
-	size_t	count;
+	t_list	*res;
+	t_list	*curr;
 
-	count = 0;
-	while (count < n)
+	while (head != NULL)
 	{
-		if (*(unsigned char *)(s1 + count) != *(unsigned char *)(s2 + count))
+		curr = ft_lstnew((*func)(head->content));
+		if (curr == NULL)
 		{
-			return ((*(unsigned char *)(s1 + count))
-				  - (*(unsigned char *)(s2 + count)));
+			ft_lstclear(&res, (*del));
+			return (NULL);
 		}
-		++count;
+		ft_lstadd_back(&res, curr);
+		head = head->next;
 	}
-	return (0);
+	return (res);
 }
