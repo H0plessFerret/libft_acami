@@ -6,13 +6,13 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:09:20 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 15:28:39 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 18:34:11 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *str, const char *to_find, size_t len)
+char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
 	size_t	str_pos;
 	size_t	to_find_pos;

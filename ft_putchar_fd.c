@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/16 18:40:39 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 18:55:57 by acami            ###   ########.fr       */
+/*   Created: 2021/04/17 15:36:38 by acami             #+#    #+#             */
+/*   Updated: 2021/04/17 15:39:41 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int character_to_update)
+void	ft_putchar_fd(char c, int fd)
 {
-	if ((character_to_update >= 'A')
-		&& (character_to_update <= 'Z'))
-		return (character_to_update + 32);
-	return (character_to_update);
+	write(fd, &c, 1);
 }

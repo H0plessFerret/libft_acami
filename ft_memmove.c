@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:39:38 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 14:52:16 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 18:45:51 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 	else if (dest > src)
 	{
 		count = len;
-		while (count >= 0)
+		while (count != 0)
 		{
-			*(unsigned char *)(dest + count) = *(unsigned char *)(src + count);
 			--count;
+			*(unsigned char *)(dest + count)
+				= *(unsigned char *)(src + count);
 		}
 	}
 	return (dest);

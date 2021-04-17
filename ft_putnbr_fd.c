@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/16 16:30:14 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 19:12:59 by acami            ###   ########.fr       */
+/*   Created: 2021/04/17 15:46:43 by acami             #+#    #+#             */
+/*   Updated: 2021/04/17 16:52:41 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	count;
+	long long	divider;
+	char		current_digit;
+	char		num_started;
 
-	count = 0;
-	if (size != 0)
+	num_started = 1;
+	divider = -1000000000;
+	if (n < 0)
+		write(fd, "-", 1);
+	else
+		n = n * -1;
+	while (divider != 0)
 	{
-		while ((*(src + count) != '\0') && (count < size - 1))
+		current_digit = n / divider % 10 + 48;
+		divider = divider / 10;
+		if ((current_digit != '0') || (num_started != 1) || (divider == 0))
 		{
-			*(dest + count) = *(src + count);
-			++count;
+			num_started = 0;
+			write(fd, &current_digit, 1);
 		}
-		*(dest + count) = '\0';
 	}
-	return (ft_strlen(src));
 }

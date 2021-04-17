@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/16 18:40:39 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 18:55:57 by acami            ###   ########.fr       */
+/*   Created: 2021/04/17 18:11:12 by acami             #+#    #+#             */
+/*   Updated: 2021/04/17 18:15:36 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int character_to_update)
+char	*ft_strmapi(char const *str, char (*func)(unsigned int, char))
 {
-	if ((character_to_update >= 'A')
-		&& (character_to_update <= 'Z'))
-		return (character_to_update + 32);
-	return (character_to_update);
+	char	*res;
+	size_t	count;
+
+	res = (char *)malloc((ft_strlen(str) + 1) * sizeof(char));
+	count = 0;
+	while (*(str + count) != '\0')
+	{
+		*(res + count) = (*func)(count, *(str + count));
+		++count;
+	}
+	*(res + count) = '\0';
+	return (res);
 }

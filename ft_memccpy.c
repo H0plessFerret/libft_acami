@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:34:51 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 15:24:40 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 18:32:30 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	*ft_memccpy(void *dest, const void *src, int character, size_t n)
 	count = 0;
 	while (count < n)
 	{
+		*(unsigned char *)(dest + count) = *(unsigned char *)(src + count);
 		if (*(unsigned char *)(src + count) == (unsigned char)character)
 			return (dest + count + 1);
-		*(unsigned char *)(dest + count) = *(unsigned char *)(src + count);
 		++count;
 	}
 	return (NULL);

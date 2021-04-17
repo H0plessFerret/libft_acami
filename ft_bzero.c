@@ -6,17 +6,17 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:26:09 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 14:32:01 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 18:45:21 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	bzero(void *str, size_t n)
+void	ft_bzero(void *str, size_t n)
 {
-	while (n >= 0)
+	while (n != 0)
 	{
-		*(unsigned char *)(str + n) = 0;
 		--n;
+		*(unsigned char *)(str + n) = 0;
 	}
 }

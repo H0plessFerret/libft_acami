@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:17:26 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 14:31:11 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 18:43:22 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	*ft_memset(void *mem, int val, size_t len)
 {
-	while (len >= 0)
+	while (len != 0)
 	{
-		*(unsigned char *)(mem + len) = (unsigned char)val;
 		--len;
+		*(unsigned char *)(mem + len) = (unsigned char)val;
 	}
 	return (mem);
 }
