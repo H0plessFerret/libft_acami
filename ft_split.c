@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:31:23 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 20:24:23 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 22:59:48 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,20 @@ size_t	ft_wordlen(const char *str, char separator)
 	return (count);
 }
 
+static void	ft_free_split(char ***res, size_t amount_to_del)
+{
+	size_t	count;
+
+	count = 0;
+	while (count < amount_to_del)
+	{
+		free(*(*res + count));
+		++count;
+	}
+	free(*res);
+	*res = NULL;
+}
+
 char	**ft_split(char const *str, char separator)
 {
 	char	**res;
@@ -64,6 +78,8 @@ char	**ft_split(char const *str, char separator)
 	size_t	curr_word;
 
 	res = (char **)malloc(sizeof(char *) * ft_space_needed(str, separator) + 1);
+	if (res == NULL)
+		return (res);
 	*(res + ft_space_needed(str, separator)) = NULL;
 	curr_word = 0;
 	while (*str != '\0')
@@ -71,6 +87,11 @@ char	**ft_split(char const *str, char separator)
 		if (!ft_is_sep(*str, separator))
 		{
 			*(res + curr_word) = (char *)malloc(ft_wordlen(str, separator) + 1);
+			if (*(res + curr_word) == NULL)
+			{
+				ft_free_split(&res, curr_word);
+				return (res);
+			}
 			count = 0;
 			while (!ft_is_sep(*str, separator))
 			{

@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 21:52:25 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 22:01:14 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 22:50:06 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_list	*ft_lstmap(t_list *head, void *(*func)(void *), void (*del)(void *))
 	t_list	*res;
 	t_list	*curr;
 
+	res = NULL;
 	while (head != NULL)
 	{
 		curr = ft_lstnew((*func)(head->content));

@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 21:38:12 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 22:44:02 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 22:48:04 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	ft_lstadd_back(t_list **head, t_list *new_elem)
 	}
 	curr = *head;
 	while (curr->next != NULL)
-		curr = (curr)->next;
-	(curr)->next = new_elem;
+		curr = curr->next;
+	curr->next = new_elem;
 }

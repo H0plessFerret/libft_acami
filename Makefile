@@ -6,7 +6,7 @@
 #    By: acami <acami@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/17 15:17:44 by acami             #+#    #+#              #
-#    Updated: 2021/04/17 22:43:55 by acami            ###   ########.fr        #
+#    Updated: 2021/04/17 22:45:11 by acami            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(NAME):	$(OBJS)
 			$(LIBRAN) $(NAME)
 
 bonus:		$(OBJS) $(BONUS_OBJS)
-			$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+			$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS)
 			$(LIBRAN) $(NAME)
 
 all:		$(NAME)
