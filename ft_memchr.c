@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:52:46 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 14:55:10 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 15:27:46 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*memchr(const void *str, int character, size_t n)
 	while (count < n)
 	{
 		if (*(unsigned char *)(str + count) == (unsigned char)character)
-			return (str + count);
+			return ((void *)str + count);
 		++count;
 	}
 	return (NULL);

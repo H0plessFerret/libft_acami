@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:02:29 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 14:06:13 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 15:30:19 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ char	*ft_strrchr(const char *str, int character)
 	while (*str != '\0')
 	{
 		if (*str == character)
-			res = str;
+			res = (char *)str;
 		++str;
 	}
 	if (character == '\0')
-		res = str;
-	return (res);
+		res = (char *)str;
+	return ((char *)res);
 }

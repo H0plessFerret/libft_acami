@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:09:20 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 14:15:20 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 15:28:39 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strstr(const char *str, const char *to_find, size_t len)
 	to_find_len = ft_strlen(to_find);
 	if (*to_find == '\0')
 	{
-		return (str);
+		return ((char *)str);
 	}
 	while ((*(str + str_pos) != '\0') && (str_pos + to_find_len < len))
 	{
@@ -33,7 +33,7 @@ char	*ft_strstr(const char *str, const char *to_find, size_t len)
 			++to_find_pos;
 			if (*(to_find + to_find_pos) == '\0')
 			{
-				return (str + str_pos);
+				return ((char *)str + str_pos);
 			}
 		}
 		++str_pos;
