@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:41:32 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 18:18:47 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 19:47:45 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,38 +26,57 @@ static size_t	ft_prepare_number(int n)
 	}
 	while (n / divider == 0 && divider != -1)
 	{
-		--res;
 		divider /= 10;
+		--res;
 	}
 	return (res);
 }
 
-static long long	ft_save_next_digit(int n, long long divider, char *res,
-char *num_started)
+static long long	basic_pow(int x, int n)
 {
-	char	current_digit;
+	long long	res;
 
-	current_digit = n / divider % 10 + '0';
-	divider = divider / 10;
-	if ((current_digit != '0') || (num_started != 0) || (divider == 0))
+	res = x;
+	while (n > 1)
 	{
-		*num_started = 1;
-		*res = current_digit;
+		res *= x;
+		--n;
 	}
-	return (divider);
+	return (res);
+}
+
+static char	*ft_generate_num(int n, char *res, size_t num_len,
+size_t current_pos)
+{
+	char		current_digit;
+	char		num_started;
+	long long	divider;
+
+	num_started = 0;
+	divider = -1 * basic_pow(10, num_len - 1);
+	while (divider != 0)
+	{
+		current_digit = n / divider % 10 + 48;
+		divider = divider / 10;
+		if ((current_digit != '0') || (num_started != 0) || (divider == 0))
+		{
+			num_started = 1;
+			*(res + current_pos) = current_digit;
+			++current_pos;
+		}
+	}
+	return (res);
 }
 
 char	*ft_itoa(int n)
 {
 	char		*res;
 	size_t		current_pos;
-	char		num_started;
-	long long	divider;
+	size_t		num_len;
 
-	num_started = 0;
 	current_pos = 0;
-	divider = -1000000000;
-	res = (char *)malloc((ft_prepare_number(n) + 1) * sizeof(char));
+	num_len = ft_prepare_number(n);
+	res = (char *)malloc((num_len + 1) * sizeof(char));
 	if (res == NULL)
 		return (res);
 	if (n < 0)
@@ -67,9 +86,7 @@ char	*ft_itoa(int n)
 	}
 	else
 		n = n * -1;
-	while (divider != 0)
-		divider = ft_save_next_digit(n, divider,
-				(res + current_pos++), &num_started);
-	*(res + current_pos) = '\0';
+	ft_generate_num(n, res, num_len, current_pos);
+	*(res + num_len) = '\0';
 	return (res);
 }

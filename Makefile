@@ -6,7 +6,7 @@
 #    By: acami <acami@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/17 15:17:44 by acami             #+#    #+#              #
-#    Updated: 2021/04/17 18:17:47 by acami            ###   ########.fr        #
+#    Updated: 2021/04/17 20:28:09 by acami            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,29 +16,29 @@ SRCS		= ft_atoi.c       ft_isalpha.c    ft_itoa.c       ft_memcpy.c     ft_puten
 ft_bzero.c      ft_isascii.c    ft_memccpy.c    ft_memmove.c    ft_putnbr_fd.c  ft_strdup.c     ft_strlen.c     ft_strrchr.c    ft_toupper.c \
 ft_calloc.c     ft_isdigit.c    ft_memchr.c     ft_memset.c     ft_putstr_fd.c  ft_strjoin.c    ft_strmapi.c    ft_strtrim.c \
 ft_isalnum.c    ft_isprint.c    ft_memcmp.c     ft_putchar_fd.c ft_split.c      ft_strlcat.c    ft_strncmp.c    ft_substr.c
-OBJS		= ${SRCS:.c=.o}
-TMPS		= ${SRCS:.c=.c~}
+OBJS		= $(SRCS:.c=.o)
+TMPS		= $(SRCS:.c=.c~)
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -I ${HEADERS}
+CFLAGS		= -Wall -Wextra -Werror -I $(HEADERS)
 AR			= ar
 ARFLAGS		= rc
 LIBRAN		= ranlib
 RM			= rm -f
 
 .c.o:		
-			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+			$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-${NAME}:	${OBJS}
-			${AR} ${ARFLAGS} ${NAME} ${OBJS}
-			${LIBRAN} ${NAME}
+$(NAME):	$(OBJS)
+			$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+			$(LIBRAN) $(NAME)
 
-all:		${NAME}
+all:		$(NAME)
 
 clean:		
-			${RM} ${TMP}
+			$(RM) $(TMP)
 
 fclean:		clean
-			${RM} ${OBJS}
+			$(RM) $(OBJS)
 
 re:			fclean all
 

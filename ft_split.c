@@ -6,13 +6,20 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:31:23 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 16:41:17 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/17 20:24:23 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_space_needed(const char *str, char separator)
+char	ft_is_sep(char sym, char separator)
+{
+	if ((sym == '\0') || (sym == separator))
+		return (1);
+	return (0);
+}
+
+size_t	ft_space_needed(const char *str, char separator)
 {
 	size_t	space_required;
 	size_t	count;
@@ -23,29 +30,29 @@ static size_t	ft_space_needed(const char *str, char separator)
 		return (0);
 	if (ft_strlen(str) == 1)
 	{
-		if (*str == separator)
+		if (ft_is_sep(*str, separator))
 			return (0);
 		return (1);
 	}
-	if (*str != separator)
+	if (!ft_is_sep(*str, separator))
 		++space_required;
 	while (*(str + 1) != '\0')
 	{
-		if (*str == separator && *(str + 1) != separator)
+		if (ft_is_sep(*str, separator) != ft_is_sep(*(str + 1), separator))
 			++space_required;
 		++str;
 	}
-	if (*str != separator)
+	if (!ft_is_sep(*str, separator))
 		++space_required;
 	return (space_required / 2);
 }
 
-static size_t	ft_wordlen(const char *str, char separator)
+size_t	ft_wordlen(const char *str, char separator)
 {
 	size_t	count;
 
 	count = 0;
-	while (*(str + count) != separator)
+	while (!ft_is_sep(*(str + count), separator))
 		++count;
 	return (count);
 }
@@ -61,11 +68,11 @@ char	**ft_split(char const *str, char separator)
 	curr_word = 0;
 	while (*str != '\0')
 	{
-		if (*str != separator)
+		if (!ft_is_sep(*str, separator))
 		{
 			*(res + curr_word) = (char *)malloc(ft_wordlen(str, separator) + 1);
 			count = 0;
-			while (*str != separator)
+			while (!ft_is_sep(*str, separator))
 			{
 				*(*(res + curr_word) + count++) = *str;
 				++str;
