@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 16:30:14 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 19:12:59 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/19 14:34:43 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	count;
 
+	if (dest == NULL || src == NULL)
+		return (0);
 	count = 0;
 	if (size != 0)
 	{

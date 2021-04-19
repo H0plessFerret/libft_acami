@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 15:42:08 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 15:43:19 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/19 14:33:36 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_putendl_fd(char *str, int fd)
 {
-	write(fd, str, ft_strlen(str));
-	write(fd, "\n", 1);
+	if (str != NULL)
+	{
+		write(fd, str, ft_strlen(str));
+		write(fd, "\n", 1);
+	}
 }

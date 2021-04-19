@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:21:25 by acami             #+#    #+#             */
-/*   Updated: 2021/04/17 21:15:29 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/19 14:31:16 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	left_len;
 	size_t	right_len;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	ft_find_trim_size(&left_len, &right_len, s1, set);
 	res = (char *)malloc(ft_strlen(s1) - left_len - right_len + 1);
 	if (res != NULL)

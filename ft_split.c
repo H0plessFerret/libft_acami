@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:31:23 by acami             #+#    #+#             */
-/*   Updated: 2021/04/19 14:26:32 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/19 14:36:12 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,12 @@ size_t curr_word)
 	return (1);
 }
 
-static size_t	ft_word_allocpy(const char *str, char separator, char **res, size_t count)
+static size_t	ft_word_allocpy(const char *str, char separator, char **res,
+size_t count)
 {
 	size_t	curr_word;
 	size_t	str_pos;
-	
+
 	str_pos = 0;
 	curr_word = 0;
 	while (*(str + str_pos) != '\0')
