@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:11:23 by acami             #+#    #+#             */
-/*   Updated: 2021/04/19 14:29:47 by acami            ###   ########.fr       */
+/*   Updated: 2021/04/19 15:44:19 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ char	*ft_substr(char const *str, unsigned int start, size_t len)
 
 	if (str == NULL)
 		return (NULL);
+	if (ft_strlen(str + start) < len)
+		len = ft_strlen(str + start);
 	res = (char *)ft_calloc(len + 1, sizeof(char));
-	count = 0;
-	if (ft_strlen(str) <= start)
-		return (res);
 	if (res == NULL)
 		return (res);
-	while ((*(str + count + start) != '\0') && (count < len))
+	if (ft_strlen(str) <= start)
+		return (res);
+	count = 0;
+	while (count < len)
 	{
 		*(res + count) = *(str + count + start);
 		++count;
