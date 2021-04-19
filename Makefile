@@ -6,7 +6,7 @@
 #    By: acami <acami@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/17 15:17:44 by acami             #+#    #+#              #
-#    Updated: 2021/04/17 22:45:11 by acami            ###   ########.fr        #
+#    Updated: 2021/04/19 17:10:25 by acami            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ TMPS		= $(SRCS:.c=.c~)
 BONUS_SRCS	= ft_lstadd_back.c        ft_lstclear.c           ft_lstiter.c            ft_lstmap.c             ft_lstsize.c \
 ft_lstadd_front.c       ft_lstdelone.c          ft_lstlast.c            ft_lstnew.c
 BONUS_OBJS	= $(BONUS_SRCS:.c=.o)
-BONUS_TMP	= $(BONUS_SRCS:.c=.c~)
+BONUS_TMPS	= $(BONUS_SRCS:.c=.c~)
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -I $(HEADERS)
 AR			= ar
@@ -43,7 +43,7 @@ bonus:		$(OBJS) $(BONUS_OBJS)
 all:		$(NAME)
 
 clean:		
-			$(RM) $(TMP) $(BONUS_TMP)
+			$(RM) $(TMPS) $(BONUS_TMPS)
 
 fclean:		clean
 			$(RM) $(OBJS) $(BONUS_OBJS)
