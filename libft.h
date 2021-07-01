@@ -72,7 +72,6 @@ void	ft_lstclear(t_list **head, void (*del)(void *));
 void	ft_lstiter(t_list *head, void (*func)(void *));
 t_list	*ft_lstmap(t_list *head, void *(*func)(void *), void (*del)(void *));
 
-
 void	ft_strtoupper(char *str);
 
 #endif
